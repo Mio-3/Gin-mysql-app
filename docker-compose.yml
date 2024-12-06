@@ -2,16 +2,21 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:15
-    container_name: todo_postgres
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: todo_mysql
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: todo_db
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
+      - ./backend/mysql/logs:/var/log/mysql
+    command: --default-authentication-plugin=mysql_native_password
 
 volumes:
-  postgres_data:
+  mysql_data:
