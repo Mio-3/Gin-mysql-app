@@ -1,6 +1,4 @@
 linters:
-  disable:
-    - golint
   enable:
     - gofmt
     - govet
@@ -9,10 +7,9 @@ linters:
     - gosimple
     - ineffassign
     - unused
-    - revive
 
 run:
-  timeout: 5m
+  go: '1.21'
 
 issues:
   exclude-rules:
