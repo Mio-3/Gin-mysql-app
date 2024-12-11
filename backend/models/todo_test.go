@@ -7,24 +7,24 @@ import (
 
 func TestTodoValidation(t *testing.T) {
 	tests := []struct {
-		name  string
-		todo Todo
+		name    string
+		todo    Todo
 		wantErr bool
-	} {
+	}{
 		{
 			name: "valid todo",
-			todo : Todo{
-				Title: "title",
-			  Description: "description",
-				Completed: false,
+			todo: Todo{
+				Title:       "title",
+				Description: "description",
+				Completed:   false,
 			},
 			wantErr: false,
-		},{
+		}, {
 			name: "empty title",
-			todo: Todo {
-				Title: "",
+			todo: Todo{
+				Title:       "",
 				Description: "description",
-				Completed: false,
+				Completed:   false,
 			},
 			wantErr: true,
 		},

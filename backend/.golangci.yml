@@ -1,0 +1,18 @@
+linters:
+  enable:
+    - gofmt
+    - govet
+    - errcheck
+    - staticcheck
+    - gosimple
+    - ineffassign
+    - unused
+
+run:
+  go: '1.21'
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck

@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func setupTestDB(t *testing.T) *gorm.DB{
+func setupTestDB(t *testing.T) *gorm.DB {
 	database, err := db.Init()
 
 	if err != nil {
@@ -24,9 +24,9 @@ func TestTodoRepository_Create(t *testing.T) {
 	repo := NewTodoRepository(database)
 
 	todo := &models.Todo{
-		Title: "title",
+		Title:       "title",
 		Description: "description",
-		Completed: false,
+		Completed:   false,
 	}
 
 	createdTodo, err := repo.Create(todo)
@@ -59,9 +59,9 @@ func TestTodoRepository_FindAll(t *testing.T) {
 
 	for _, todo := range todos {
 		_, err := repo.Create(todo)
-			if err != nil {
-				t.Fatalf("failed to create todo: %v", err)
-			}
+		if err != nil {
+			t.Fatalf("failed to create todo: %v", err)
+		}
 	}
 
 	fetchedTodos, err := repo.FindAll()
